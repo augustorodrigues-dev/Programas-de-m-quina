@@ -12,10 +12,9 @@
 
 | Nome | Matrícula |
 |------|-----------|
-|      |           |
-|      |           |
-|      |           |
-|      |           |
+|Augusto Rodrigues      |24070005           |
+|Cauê Jadão      |24070033           |
+|César Ribeiro     |24070011           |
 
 ---
 

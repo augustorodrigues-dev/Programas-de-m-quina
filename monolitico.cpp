@@ -4,7 +4,7 @@ using namespace std;
 int main() {
     long long n, soma, i;
 
-    std::cout << "=== Programa Monolitico — Soma dos N Primeiros Naturais ===" << endl;
+    cout << "=== Programa Monolitico — Soma dos N Primeiros Naturais ===" << endl;
     cout << "Digite n: ";
     cin >> n;
 
@@ -24,7 +24,7 @@ TESTE:
     else goto FIM;
 
 CORPO:
-    soma = soma + i;
+    soma++;
     i++;
     goto TESTE;
 

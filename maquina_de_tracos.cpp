@@ -35,7 +35,7 @@ vector<Estado> mt_monolitico(long long n) {
             break;
         }
     }
-
+    
     traco.push_back({"FIM", i, soma,
         "retorna soma=" + to_string(soma)});
 
@@ -84,7 +84,7 @@ vector<Estado> mt_variante(long long n) {
             traco.push_back({"TESTE", i, soma,
                 to_string(i) + "<=" + to_string(n) + " ? sim"});
             
-            i ++;
+            i++;
             soma = soma + i;
             traco.push_back({"CORPO", i, soma,
                 "i incrementado para " + to_string(i) +
@@ -197,8 +197,8 @@ int main() {
     auto traco_iter = mt_iterativo(n);
     auto traco_var  = mt_variante(n);
 
-    exibir_traco("Monolitico",               traco_mono, n);
-    exibir_traco("Iterativo",                traco_iter, n);
+    exibir_traco("Monolitico", traco_mono, n);
+    exibir_traco("Iterativo",  traco_iter, n);
     exibir_traco("Variante (i++ antes soma)", traco_var,  n);
 
     cout << "\n\n====  CASO 1: EQUIVALENCIA FORTE  ====" << endl;
