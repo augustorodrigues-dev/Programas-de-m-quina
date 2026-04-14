@@ -16,16 +16,16 @@ int main() {
     
 INICIO:
     soma = 0;
-    i    = 1;
+    i = 1;
     goto TESTE;
 
 TESTE:
     if (i <= n) goto CORPO;
-    else        goto FIM;
+    else goto FIM;
 
 CORPO:
     soma = soma + i;
-    i    = i + 1;
+    i++;
     goto TESTE;
 
 FIM:

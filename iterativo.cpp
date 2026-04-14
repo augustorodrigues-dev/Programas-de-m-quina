@@ -2,11 +2,11 @@
 using namespace std;
 long long soma_iterativa(long long n) {
     long long soma = 0;
-    long long i    = 1;
+    long long i = 1;
 
     while (i <= n) {
         soma = soma + i;
-        i    = i + 1;
+        i++;
     }
 
     return soma;

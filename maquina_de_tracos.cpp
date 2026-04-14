@@ -69,7 +69,6 @@ vector<Estado> mt_iterativo(long long n) {
 
     traco.push_back({"FIM", i, soma,
         "retorna soma=" + to_string(soma)});
-
     return traco;
 }
 
@@ -182,7 +181,6 @@ void comparar_tracosFormais(
 
 int main() {
     long long n;
-
     cout << "============================================================" << endl;
     cout << "   MAQUINA DE TRACOS — Soma dos N Primeiros Naturais" << endl;
     cout << "   Teoria da Computabilidade" << endl;
