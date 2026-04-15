@@ -216,6 +216,6 @@ Cada programa (monolítico, iterativo e recursivo) exibe ao final da execução:
 
 | Ferramenta | Finalidade | Trechos utilizados | Revisão da equipe |
 |------------|------------|-------------------|-------------------|
-| Claude (Anthropic) |Estrutura do README |`README.md` | Revisão de lógica, verificação dos traços, conferência dos comentários formais e adequação ao conteúdo da disciplina |
+| Claude (Anthropic) |Estrutura do README e máquina de traços|`README.md`, M̀áquina de traços.cpp| Revisão de lógica, verificação dos traços, conferência dos comentários formais e adequação ao conteúdo da disciplina |
 
 Todos os trechos gerados foram revisados e validados pela equipe antes da submissão. A responsabilidade sobre o conteúdo entregue e apresentado é integralmente da equipe.
