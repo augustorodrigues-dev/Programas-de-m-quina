@@ -1,22 +1,25 @@
+#ifndef MONOLITICO_H
+#define MONOLITICO_H
+
 #include <iostream>
 using namespace std;
 
-int main() {
+inline void rodar_monolitico() {
     long long n, soma, i;
 
-    cout << "=== Programa Monolitico — Soma dos N Primeiros Naturais ===" << endl;
+    cout << "\n=== Programa Monolitico — Soma dos N Primeiros Naturais ===" << endl;
     cout << "Digite n: ";
     cin >> n;
 
     if (n < 0) {
         cout << "Entrada invalida: n deve ser >= 0." << endl;
-        return 1;
+        return;
     }
 
-    
+
 INICIO:
     soma = 0;
-    i = 1;
+    i    = 1;
     goto TESTE;
 
 TESTE:
@@ -24,11 +27,12 @@ TESTE:
     else goto FIM;
 
 CORPO:
-    soma++;
+    soma = soma + i;
     i++;
     goto TESTE;
 
 FIM:
-    cout << "Soma dos " << n << " primeiros naturais = " << soma << endl;
-    return 0;
+    cout << "Resultado: soma dos " << n << " primeiros naturais = " << soma << endl;
 }
+
+#endif 

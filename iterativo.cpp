@@ -1,6 +1,10 @@
+#ifndef ITERATIVO_H
+#define ITERATIVO_H
+
 #include <iostream>
 using namespace std;
-long long soma_iterativa(long long n) {
+
+inline long long soma_iterativa(long long n) {
     long long soma = 0;
     long long i = 1;
 
@@ -12,18 +16,20 @@ long long soma_iterativa(long long n) {
     return soma;
 }
 
-int main() {
+inline void rodar_iterativo() {
     long long n;
 
-    cout << "=== Programa Iterativo — Soma dos N Primeiros Naturais ===" << endl;
+    cout << "\n=== Programa Iterativo — Soma dos N Primeiros Naturais ===" << endl;
     cout << "Digite n: ";
     cin >> n;
 
     if (n < 0) {
         cout << "Entrada invalida: n deve ser >= 0." << endl;
-        return 1;
+        return;
     }
 
-    cout << "Soma dos " << n << " primeiros naturais = " << soma_iterativa(n) << endl;
-    return 0;
+    cout << "Resultado: soma dos " << n << " primeiros naturais = "
+              << soma_iterativa(n) << endl;
 }
+
+#endif
