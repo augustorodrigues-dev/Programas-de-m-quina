@@ -2,12 +2,16 @@
 #define RECURSIVO_H
 
 #include <iostream>
+#include <chrono>
 using namespace std;
-inline long long soma_recursiva(long long n) {
+
+inline long long soma_recursiva(long long n, long long& passos) {
+    passos++; 
+
     if (n == 0) {
         return 0;
     }
-    return n + soma_recursiva(n - 1);
+    return n + soma_recursiva(n - 1, passos);
 }
 
 inline void rodar_recursivo() {
@@ -22,8 +26,21 @@ inline void rodar_recursivo() {
         return;
     }
 
-    cout << "Resultado: soma dos " << n << " primeiros naturais = "
-              << soma_recursiva(n) << endl;
+    long long passos = 0;
+
+    auto inicio = chrono::high_resolution_clock::now();
+    long long resultado = soma_recursiva(n, passos);
+    auto fim = chrono::high_resolution_clock::now();
+    auto duracao = chrono::duration_cast<chrono::nanoseconds>(fim - inicio);
+
+    cout << "------------------------------------------------------------" << endl;
+    cout << "Resultado : soma dos " << n << " primeiros naturais = " << resultado << endl;
+    cout << "Passos    : " << passos << " passos executados" << endl;
+    cout << "           (" << (n + 1) << " chamadas recursivas: soma(" << n
+              << ") ate soma(0))" << endl;
+    cout << "Tempo     : " << duracao.count() << " ns  ("
+              << duracao.count() / 1000.0 << " us)" << endl;
+    cout << "------------------------------------------------------------" << endl;
 }
 
 #endif 
