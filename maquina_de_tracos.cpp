@@ -7,6 +7,7 @@
 #include <iomanip>
 using namespace std;
 
+
 struct Estado {
     string rotulo;    
     long long i;         
@@ -27,7 +28,7 @@ inline vector<Estado> mt_monolitico(long long n) {
                 to_string(i) + "<=" + to_string(n) + " ? sim -> goto CORPO"});
             soma = soma + i;
             long long i_antes = i;
-            i++;
+            i    = i + 1;
             traco.push_back({"CORPO", i, soma,
                 "soma=" + to_string(soma) +
                 ", i=" + to_string(i_antes) + "+1=" + to_string(i) +
@@ -46,7 +47,7 @@ inline vector<Estado> mt_monolitico(long long n) {
 inline vector<Estado> mt_iterativo(long long n) {
     vector<Estado> traco;
     long long soma = 0;
-    long long i = 1;
+    long long i    = 1;
 
     traco.push_back({"INICIO", i, soma, "soma=0, i=1"});
 
@@ -75,28 +76,32 @@ inline vector<Estado> mt_iterativo(long long n) {
 inline vector<Estado> mt_variante(long long n) {
     vector<Estado> traco;
     long long soma = 0;
-    long long i = 1;
+    long long i = n; 
 
-    traco.push_back({"INICIO", i, soma, "soma=0, i=1  [VARIANTE: incrementa i antes de somar]"});
+    traco.push_back({"INICIO", i, soma,
+        "soma=0, i=n=" + to_string(n) + "  [VARIANTE: soma decrescente n..1]"});
 
     while (true) {
-        if (i <= n) {
+        if (i > 0) {
             traco.push_back({"TESTE", i, soma,
-                to_string(i) + "<=" + to_string(n) + " ? sim"});
-            i++;   
+                to_string(i) + ">0 ? sim -> goto CORPO"});
             soma = soma + i;
+            long long i_antes = i;
+            i--;  
             traco.push_back({"CORPO", i, soma,
-                "i incrementado para " + to_string(i) +
-                " antes de somar -> soma=" + to_string(soma)});
+                "soma=" + to_string(soma) +
+                ", i=" + to_string(i_antes) + "-1=" + to_string(i) +
+                " -> goto TESTE"});
         } else {
             traco.push_back({"TESTE", i, soma,
-                to_string(i) + "<=" + to_string(n) + " ? nao -> FIM"});
+                to_string(i) + ">0 ? nao -> goto FIM"});
             break;
         }
     }
 
     traco.push_back({"FIM", i, soma,
-        "retorna soma=" + to_string(soma) + "  (DIVERGE do programa original)"});
+        "retorna soma=" + to_string(soma) +
+        "  (mesmo resultado, traco diferente)"});
     return traco;
 }
 
@@ -222,12 +227,12 @@ inline void menu_maquina_de_tracos() {
             auto traco_var  = mt_variante(n);
 
             cout << "\n====  CASO 2: NAO-EQUIVALENCIA  ====" << endl;
-            cout << "Comparando: Monolitico original vs Variante (i++ antes da soma)" << endl;
-            cout << "A variante troca a ordem no CORPO: incrementa i ANTES de somar," << endl;
-            cout << "computando 2+3+...+(n+1) em vez de 1+2+...+n." << endl;
+            cout << "Comparando: Monolitico (crescente 1..n) vs Variante (decrescente n..1)" << endl;
+            cout << "Ambos produzem o MESMO resultado final, porem os tracas sao diferentes." << endl;
+            cout << "Isso prova que resultado igual NAO implica equivalencia forte." << endl;
 
-            exibir_traco("Monolitico",traco_mono, n);
-            exibir_traco("Variante (i++ antes soma)", traco_var, n);
+            exibir_traco("Monolitico",                 traco_mono, n);
+            exibir_traco("Variante (decrescente n..1)", traco_var,  n);
             comparar_tracosFormais("Monolitico", traco_mono, "Variante", traco_var);
 
         } else if (opcao == "3") {
